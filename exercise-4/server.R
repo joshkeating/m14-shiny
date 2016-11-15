@@ -2,9 +2,8 @@
 library(dplyr)
 
 # Read in data
-setwd('~/Documents/info-201/m14-shiny/exercise-4/')
+setwd('~/Documents/info-201/m14-shiny/exercise-3/')
 source('./scripts/buildMap.R')
-source('./scripts/buildScatter.R')
 df <- read.csv('./data/electoral_college.csv', stringsAsFactors = FALSE)
 state.codes <- read.csv('./data/state_codes.csv', stringsAsFactors = FALSE)
 
@@ -19,9 +18,6 @@ shinyServer(function(input, output) {
   
   # Render a plotly object that returns your map
   output$map <- renderPlotly({ 
-      return(BuildMap(joined.data, input$mapvar))
-  }) 
-  
-  # Create a `scatter` property on your `output` object. That property shoudl be a `renderPlotly` object that returns a scatterplot (`BuildScatter`)
-  
+    return(BuildMap(joined.data, input$mapvar))
+  })
 })
